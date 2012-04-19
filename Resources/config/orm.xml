@@ -1,0 +1,30 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <parameters>
+        <parameter key="mqm_order.order_manager.class">MQM\OrderBundle\Entity\OrderManager</parameter>
+        <parameter key="mqm_order.model.order.class">MQM\OrderBundle\Entity\Order</parameter>
+        <parameter key="mqm_order.model.order_item.class">MQM\OrderBundle\Entity\OrderItem</parameter>
+        <parameter key="mqm_order.order_factory.class">MQM\OrderBundle\Entity\OrderFactory</parameter>
+    </parameters>
+
+    <services>
+        <service id="mqm_order.order_manager" class="%mqm_order.order_manager.class%" public="true">
+            <argument type="service" id="mqm_order.entity_manager" />
+            <argument type="service" id="mqm_order.order_factory" />
+        </service>
+        
+        <service id="mqm_order.order_factory" class="%mqm_order.order_factory.class%" public="true">
+        <argument>%mqm_order.model.order.class%</argument>
+        <argument>%mqm_order.model.order_item.class%</argument>
+        <argument type="service" id="mqm_user.user_manager" />
+        </service>
+        
+        <service id="mqm_order.entity_manager" factory-service="doctrine" factory-method="getEntityManager" class="Doctrine\ORM\EntityManager" public="false">
+        </service>        
+    </services>
+    
+</container>

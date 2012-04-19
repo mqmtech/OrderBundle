@@ -1,0 +1,8 @@
+#Test
+test: This is a translation test
+
+#Orders state
+order:
+    RECEIVED: Received
+    IN_PROCESS: In process
+    DELIVERED: Sent
