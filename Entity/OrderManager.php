@@ -90,9 +90,9 @@ class OrderManager implements OrderManagerInterface
     /**
      * {@inheritDoc} 
      */
-    public function findOrders(PaginationInterface $pagination = null)
+    public function findOrders(SortManagerInterface $sortManager = null, PaginationInterface $pagination = null)
     {
-        return $this->getOrderRepository()->findAll($pagination);
+        return $this->getOrderRepository()->findAll($sortManager, $pagination);
     }
     
     /**

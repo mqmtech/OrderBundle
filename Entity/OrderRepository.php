@@ -7,10 +7,13 @@ use MQM\PaginationBundle\Pagination\PaginationInterface;
 
 class OrderRepository extends EntityRepository
 {
-    public function findAll(PaginationInterface $pagination = null)
+    public function findAll(SortManagerInterface $sortManager = null, PaginationInterface $pagination = null)
     {
         $em = $this->getEntityManager();        
         $sql = "SELECT o FROM MQMOrderBundle:Order o";
+        if ($sortManager) {
+            $sql = $sortManager->sortQuery($sql, 'o');
+        }
         $q = $em->createQuery($sql);        
         if ($pagination) {
             $q = $pagination->paginateQuery($q);

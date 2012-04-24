@@ -4,10 +4,6 @@ namespace MQM\OrderBundle\Model;
 
 interface OrderItemInterface
 {
-    const STATUS_0_RECEIVED = "RECEIVED";       //order saved in database
-    const STATUS_1_IN_PROCESS = "IN_PROCESS";   //order being processed by staff
-    const STATUS_2_DELIVERED = "DELIVERED";     //order delivered
-    
     public function getId();
     
     public function setId($id);
