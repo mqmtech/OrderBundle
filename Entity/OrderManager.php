@@ -1,19 +1,15 @@
 <?php
 
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 namespace MQM\OrderBundle\Entity;
-
 
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityRepository;
+
 use MQM\OrderBundle\Model\OrderManagerInterface;
 use MQM\OrderBundle\Model\OrderFactoryInterface;
 use MQM\OrderBundle\Model\OrderInterface;
 use MQM\SortBundle\Sort\SortManagerInterface;
+use MQM\PaginationBundle\Pagination\PaginationInterface;
 
 class OrderManager implements OrderManagerInterface
 {
@@ -94,9 +90,9 @@ class OrderManager implements OrderManagerInterface
     /**
      * {@inheritDoc} 
      */
-    public function findOrders()
+    public function findOrders(PaginationInterface $pagination = null)
     {
-        return $this->getOrderRepository()->findAll();
+        return $this->getOrderRepository()->findAll($pagination);
     }
     
     /**

@@ -3,9 +3,22 @@ namespace MQM\OrderBundle\Entity;
 
 use Doctrine\ORM\EntityRepository;
 use MQM\SortBundle\Sort\SortManagerInterface;
+use MQM\PaginationBundle\Pagination\PaginationInterface;
 
 class OrderRepository extends EntityRepository
 {
+    public function findAll(PaginationInterface $pagination = null)
+    {
+        $em = $this->getEntityManager();        
+        $sql = "SELECT o FROM MQMOrderBundle:Order o";
+        $q = $em->createQuery($sql);        
+        if ($pagination) {
+            $q = $pagination->paginateQuery($q);
+        }
+        
+        return $q->getResult();
+    }
+    
     public function findByPublicId($publicId)
     {
         $em = $this->getEntityManager();        
