@@ -162,7 +162,7 @@ class Order implements OrderInterface
     function __construct() {
         $this->createdAt = new DateTime('now');        
         $this->items = new ArrayCollection();        
-        $this->setStatus(self::STATUS_0_RECEIVED);
+        $this->setStatus(self::RECEIVED);
     }
 
     public function getProductsQuantity()

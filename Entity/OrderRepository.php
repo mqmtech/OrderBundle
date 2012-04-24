@@ -38,7 +38,7 @@ class OrderRepository extends EntityRepository
     public function findDeliveredOrdersByUserId($userId, SortManagerInterface $sortManager = null)
     {
         $em = $this->getEntityManager();
-        $sql = "SELECT o FROM MQMOrderBundle:Order o JOIN o.user u WHERE o.status LIKE '" . Order::STATUS_2_DELIVERED . "' AND u.id ='". $userId . "'";
+        $sql = "SELECT o FROM MQMOrderBundle:Order o JOIN o.user u WHERE o.status LIKE '" . Order::DELIVERED . "' AND u.id ='". $userId . "'";
         if ($sortManager) {
             $sql = $sortManager->sortQuery($sql, 'o');
         }
@@ -54,7 +54,7 @@ class OrderRepository extends EntityRepository
     public function findInProcessOrdersByUserId($userId, SortManagerInterface $sortManager = null)
     {
         $em = $this->getEntityManager();
-        $sql = "SELECT o FROM MQMOrderBundle:Order o JOIN o.user u WHERE o.status <> '" . Order::STATUS_2_DELIVERED . "' AND u.id ='". $userId . "'";
+        $sql = "SELECT o FROM MQMOrderBundle:Order o JOIN o.user u WHERE o.status <> '" . Order::DELIVERED . "' AND u.id ='". $userId . "'";
         if ($sortManager) {
             $sql = $sortManager->sortQuery($sql, 'o');
         }

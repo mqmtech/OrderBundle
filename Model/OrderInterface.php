@@ -6,9 +6,9 @@ use MQM\OrderBundle\Model\OrderItemInterface;
 
 interface OrderInterface
 {
-    const STATUS_0_RECEIVED = "RECEIVED";       //order saved in database
-    const STATUS_1_IN_PROCESS = "IN_PROCESS";   //order being processed by staff
-    const STATUS_2_DELIVERED = "DELIVERED";     //order delivered
+    const RECEIVED = "RECEIVED";       //order saved in database
+    const IN_PROCESS = "IN_PROCESS";   //order being processed by staff
+    const DELIVERED = "DELIVERED";     //order delivered
     
     public function getProductsQuantity();
     
