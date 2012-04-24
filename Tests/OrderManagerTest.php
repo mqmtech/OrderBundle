@@ -2,9 +2,9 @@
 
 namespace MQM\OrderBundle\Test\Order;
 
-use MQM\OrderBundle\Order\OrderInterface;
-use MQM\OrderBundle\Model\OrderManagerInterface;
-use Symfony\Bundle\FrameworkBundle\Tests\Functional\AppKernel;
+
+
+
 
 class OrderManagerTest extends \Symfony\Bundle\FrameworkBundle\Test\WebTestCase
 {   

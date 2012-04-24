@@ -6,7 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 use MQM\OrderBundle\Model\OrderInterface;
 use MQM\OrderBundle\Model\OrderItemInterface;
-use MQM\UserBundle\Model\UserInterface;
+
 use \DateTime;
 
 /**
