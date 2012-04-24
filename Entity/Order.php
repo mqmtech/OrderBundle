@@ -6,7 +6,6 @@ use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 use MQM\OrderBundle\Model\OrderInterface;
 use MQM\OrderBundle\Model\OrderItemInterface;
-
 use \DateTime;
 
 /**
@@ -14,8 +13,8 @@ use \DateTime;
  * @ORM\Entity(repositoryClass="MQM\OrderBundle\Entity\OrderRepository")
  * @ORM\HasLifecycleCallbacks
  */
-class Order implements OrderInterface{
-    
+class Order implements OrderInterface
+{    
     /**
      * @var integer $id
      *
@@ -161,18 +160,11 @@ class Order implements OrderInterface{
     private $user;
     
     function __construct() {
-        $this->createdAt = new DateTime('now');
-        
-        $this->items = new ArrayCollection();
-        
+        $this->createdAt = new DateTime('now');        
+        $this->items = new ArrayCollection();        
         $this->setStatus(self::STATUS_0_RECEIVED);
-
     }
-    
-    /**
-     *
-     * @return int
-     */
+
     public function getProductsQuantity()
     {
         $items = $this->getItems();
@@ -194,8 +186,6 @@ class Order implements OrderInterface{
     {
         $this->publicId = $publicId;
     }
-
-    
         
     public function getItems() 
     {
@@ -207,10 +197,6 @@ class Order implements OrderInterface{
         $this->items = $items;
     }
     
-    /**
-     *
-     * @param OrderItemInterface $item 
-     */
     public function addItem(OrderItemInterface $item)
     {
         if ($this->getItems() == null) {
@@ -239,7 +225,6 @@ class Order implements OrderInterface{
     {
         $this->status = $status;
     }
-
     
     public function getName()
     {
