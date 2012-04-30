@@ -139,7 +139,6 @@ class Order implements OrderInterface
      * @ORM\Column(name="status", type="string", nullable=true)
      */
     private $status;
-    
    
     /**
      *
