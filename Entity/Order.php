@@ -26,8 +26,7 @@ class Order implements OrderInterface
     
     /**
      * @var string $publicId
-     *
-     * @ORM\Column(name="publicId", type="string", length=255, nullable=true)
+     * @ORM\Column(name="publicId", type="string", length=255, nullable=true, unique=true)
      */
     private $publicId;
 

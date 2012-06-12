@@ -2,21 +2,21 @@
 
 namespace MQM\OrderBundle\Entity;
 
-use MQM\UserBundle\Model\UserManagerInterface;
+use MQM\UserBundle\Helper\UserAuthenticatedResolverInterface;
 use MQM\OrderBundle\Model\OrderFactoryInterface;
 
 class OrderFactory implements OrderFactoryInterface
 {
     const UID_PADDING = 99;
     
-    private $userManager;
+    private $userResolver;
     private $orderClass;
     private $orderItemClass;
     
-    public function __construct($orderClass, $orderItemClass, UserManagerInterface $userManager) {
+    public function __construct($orderClass, $orderItemClass, UserAuthenticatedResolverInterface $userResolver) {
         $this->orderClass = $orderClass;
         $this->orderItemClass = $orderItemClass;
-        $this->userManager = $userManager;
+        $this->userResolver = $userResolver;
     }
     
     /**
@@ -60,7 +60,7 @@ class OrderFactory implements OrderFactoryInterface
     {
         $stamp = strtotime("now");
         $stamp = str_replace(".", "", $stamp);
-        $user = $this->userManager->getCurrentUser();
+        $user = $this->userResolver->getCurrentUser();
         $userId = $user->getId() + self::UID_PADDING;        
         $code = $userId ."t". $stamp;
         

@@ -20,7 +20,7 @@
         <service id="mqm_order.order_factory" class="%mqm_order.order_factory.class%" public="true">
         <argument>%mqm_order.model.order.class%</argument>
         <argument>%mqm_order.model.order_item.class%</argument>
-        <argument type="service" id="mqm_user.user_manager" />
+        <argument type="service" id="mqm_user.user_resolver" />
         </service>
         
         <service id="mqm_order.entity_manager" factory-service="doctrine" factory-method="getEntityManager" class="Doctrine\ORM\EntityManager" public="false">
