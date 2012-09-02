@@ -1,6 +1,7 @@
 <?php
 namespace MQM\OrderBundle\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
 use Doctrine\ORM\EntityRepository;
 use MQM\SortBundle\Sort\SortManagerInterface;
 use MQM\PaginationBundle\Pagination\PaginationInterface;
